@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="hexo,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="hexo操作 hexo help  # 查看帮助 hexo version  #查看Hexo的版本 hexo algolia  # 更新search庫 hexo new “postName” #新建文章 hexo new post “title”  # 生成新文章：\source_posts\title.md，可省略post hexo new page “pageName” #新建页面 hexo">
-<meta name="keywords" content="java、python、AI、CV">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo操作">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/hexo操作/index.html">
 <meta property="og:site_name" content="chan">
 <meta property="og:description" content="hexo操作 hexo help  # 查看帮助 hexo version  #查看Hexo的版本 hexo algolia  # 更新search庫 hexo new “postName” #新建文章 hexo new post “title”  # 生成新文章：\source_posts\title.md，可省略post hexo new page “pageName” #新建页面 hexo">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-05T06:20:49.316Z">
+<meta property="og:updated_time" content="2019-09-08T02:31:29.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo操作">
 <meta name="twitter:description" content="hexo操作 hexo help  # 查看帮助 hexo version  #查看Hexo的版本 hexo algolia  # 更新search庫 hexo new “postName” #新建文章 hexo new post “title”  # 生成新文章：\source_posts\title.md，可省略post hexo new page “pageName” #新建页面 hexo">
@@ -335,6 +335,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -382,6 +404,28 @@
 <li>hexo cl</li>
 <li>hexo d -g</li>
 </ol>
+<h2 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h2><h3 id="创建分类选项"><a href="#创建分类选项" class="headerlink" title="创建分类选项"></a>创建分类选项</h3><p>打开命令行，进入博客所在文件夹。执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<p>成功后会提示：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO  Created: ~/Documents/blog/source/categories/index.md</span><br></pre></td></tr></table></figure>
+
+<p>根据上面的路径，找到index.md这个文件，添加type: “categories”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="给文章添加“categories”属性"><a href="#给文章添加“categories”属性" class="headerlink" title="给文章添加“categories”属性"></a>给文章添加“categories”属性</h3><p>打开需要添加分类的文章，为其添加categories属性。下方的categories: web前端表示添加这篇文章到“web前端”这个分类。注意：hexo一篇文章只能属于一个分类，也就是说如果在“- web前端”下方添加“-xxx”，hexo不会产生两个分类，而是把分类嵌套（即该文章属于 “- web前端”下的 “-xxx ”分类）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: jQuery对表单的操作及更多应用</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories:</span><br><span class="line">- web前端</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="生成“标签”页并添加tpye属性"><a href="#生成“标签”页并添加tpye属性" class="headerlink" title="生成“标签”页并添加tpye属性"></a>生成“标签”页并添加tpye属性</h3><p>打开命令行，进入博客所在文件夹。执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p>根据上面的路径，找到index.md这个文件，添加type: “tags”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章分类</span><br><span class="line">date: 2017-05-27 13:47:40</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h3 id="给文章添加“tags”属性"><a href="#给文章添加“tags”属性" class="headerlink" title="给文章添加“tags”属性"></a>给文章添加“tags”属性</h3><p>打开需要添加标签的文章，为其添加tags属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: jQuery对表单的操作及更多应用</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories:</span><br><span class="line">- web前端</span><br><span class="line">tags:</span><br><span class="line">- jQuery</span><br><span class="line">- 表格</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -396,6 +440,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
       
 
       
@@ -415,6 +465,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/05/Next主题设置/" rel="prev" title="Next主题设置">
+                Next主题设置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -491,14 +545,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -528,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo操作"><span class="nav-number">1.</span> <span class="nav-text">hexo操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">2.</span> <span class="nav-text">部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo操作"><span class="nav-number">1.</span> <span class="nav-text">hexo操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">2.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加分类"><span class="nav-number">3.</span> <span class="nav-text">添加分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分类选项"><span class="nav-number">3.1.</span> <span class="nav-text">创建分类选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给文章添加“categories”属性"><span class="nav-number">3.2.</span> <span class="nav-text">给文章添加“categories”属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">4.</span> <span class="nav-text">标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成“标签”页并添加tpye属性"><span class="nav-number">4.1.</span> <span class="nav-text">生成“标签”页并添加tpye属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给文章添加“tags”属性"><span class="nav-number">4.2.</span> <span class="nav-text">给文章添加“tags”属性</span></a></li></ol></li></ol></div>
             
 
           </div>

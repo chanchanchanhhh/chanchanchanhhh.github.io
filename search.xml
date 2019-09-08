@@ -1,18 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[FCN的学习及理解]]></title>
+    <url>%2F2019%2F09%2F08%2FFCN%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>目标检测与识别</category>
+      </categories>
+      <tags>
+        <tag>目标检测</tag>
+        <tag>全卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[入坑java开发的自学之路]]></title>
+    <url>%2F2019%2F09%2F05%2F%E5%85%A5%E5%9D%91java%E5%BC%80%E5%8F%91%E7%9A%84%E8%87%AA%E5%AD%A6%E4%B9%8B%E8%B7%AF%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Next主题设置]]></title>
+    <url>%2F2019%2F09%2F05%2FNext%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[搜索功能安装插件npm install hexo-generator-searchdb –save修改 站点配置 文件 12345search: path: search.xml field: post format: html limit: 10000 修改 主题配置文件 12local_search: enable: true]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Next主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo操作]]></title>
     <url>%2F2019%2F09%2F05%2Fhexo%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[hexo操作 hexo help # 查看帮助 hexo version #查看Hexo的版本 hexo algolia # 更新search庫 hexo new “postName” #新建文章 hexo new post “title” # 生成新文章：\source_posts\title.md，可省略post hexo new page “pageName” #新建页面 hexo clean #清除部署緩存 hexo n == hexo new #新建文章 hexo g == hexo generate #生成静态页面至public目录 hexo s == hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server） hexo d == hexo deploy #将.deploy目录部署到GitHub hexo d -g #生成加部署 hexo s -g #生成加预览 部署每次部署的步骤，可按以下两部来进行 hexo cl hexo d -g]]></content>
+    <content type="text"><![CDATA[hexo操作 hexo help # 查看帮助 hexo version #查看Hexo的版本 hexo algolia # 更新search庫 hexo new “postName” #新建文章 hexo new post “title” # 生成新文章：\source_posts\title.md，可省略post hexo new page “pageName” #新建页面 hexo clean #清除部署緩存 hexo n == hexo new #新建文章 hexo g == hexo generate #生成静态页面至public目录 hexo s == hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server） hexo d == hexo deploy #将.deploy目录部署到GitHub hexo d -g #生成加部署 hexo s -g #生成加预览 部署每次部署的步骤，可按以下两部来进行 hexo cl hexo d -g 添加分类创建分类选项打开命令行，进入博客所在文件夹。执行命令 1hexo new page categories 成功后会提示： 1INFO Created: ~/Documents/blog/source/categories/index.md 根据上面的路径，找到index.md这个文件，添加type: “categories”到内容中，添加后是这样的： 123title: 文章分类date: 2017-05-27 13:47:40type: &quot;categories&quot; 给文章添加“categories”属性打开需要添加分类的文章，为其添加categories属性。下方的categories: web前端表示添加这篇文章到“web前端”这个分类。注意：hexo一篇文章只能属于一个分类，也就是说如果在“- web前端”下方添加“-xxx”，hexo不会产生两个分类，而是把分类嵌套（即该文章属于 “- web前端”下的 “-xxx ”分类）。 123456---title: jQuery对表单的操作及更多应用date: 2017-05-26 12:12:57categories:- web前端--- 至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。 标签生成“标签”页并添加tpye属性打开命令行，进入博客所在文件夹。执行命令 1hexo new page tags 根据上面的路径，找到index.md这个文件，添加type: “tags”到内容中，添加后是这样的： 12345---title: 文章分类date: 2017-05-27 13:47:40type: &quot;tags&quot;--- 给文章添加“tags”属性打开需要添加标签的文章，为其添加tags属性。 123456789---title: jQuery对表单的操作及更多应用date: 2017-05-26 12:12:57categories:- web前端tags:- jQuery- 表格---]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[markdown基本语法和操作]]></title>
     <url>%2F2019%2F09%2F05%2Fmarkdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%92%8C%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[markdown基本语法和操作一、基本语法1.1 字体大小、颜色、类型、加粗、倾斜、删除123456&lt;font size=5&gt; Hello&lt;br&gt;&lt;font color=red&gt;color&lt;br&gt;&lt;font face=&quot;微软雅黑&quot;&gt;微软雅黑&lt;br&gt;**内容** 加粗&lt;br&gt;*内容* 倾斜&lt;br&gt;~~内容~~ 1.2 标题通过在文字前面添加#即可 123# 一级标题## 二级标题### 三级标题 1.3 超链接12[超链接名](超链接地址)[baidu](http://baidu.com) 1.4 插入图片12[图片描述](图片链接)![avatar](http://baidu.com/pic/doge.png) 1.5、代码块12int a = 0system.out.println(&quot;Hello&quot;); 1.6 引用在被引用的文本前加上&gt;符号，以及一个空格就可以了，如果只输入了一个&gt;符号会产生一个空白的引用。 1.7分割线123三个或者三个以上 - 或者 ****--- 1.8 列表无序列表 12- 使用 *，+，- 表示无序列表。- 注意：符号后面一定要有一个空格，起到缩进的作用。 有序列表 12使用数字和一个英文句点表示有序列表。注意：英文句点后面一定要有一个空格，起到缩进的作用。 注意事项 1在使用列表时，只要是数字后面加上英文的点，就会无意间产生列表，比如2017.12.30 这时候想表达的是日期，有些软件把它被误认为是列表。解决方式：在每个点前面加上\就可以了。 1.9 表格12345学号|姓名|分数-|-|-小明|男|75注意：表格对齐方式：我们可以指定表格单元格的对齐方式，冒号在左边表示左对齐，右边表示有对齐，两边都有表示居中。 学号 姓名 分数 小明 男 75 二、常用技巧2.1 换行1html语言换行标签：&lt;br&gt; 2.2 缩进字符&#160;你好&#8194;你好&#8195;你好你好 123&amp;#160;你好 缩进1/4 中文&amp;#8194;你好 缩进半个中文，1个字符&amp;#8195;你好 缩进一个中文，2个字符 特殊符号对于 Markdown 中的语法符号，前面加反斜线\即可显示符号本身。 如何让博文列表不显示全部内容默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？答案是在合适的位置加上即可 三、latex数学公式]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[hexo+github配置]]></title>
     <url>%2F2019%2F09%2F04%2Fhexo-github%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[hexo部署github博客一、简介Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。 二、安装步骤1.搭建环境准备：node.js和git环境，gitHub账户的配置2.安装Hexo3.配置Hexo4.怎么将Hexo与github page联系5.怎么发布文章6.主题 推荐7.主题Net的简单配置8.添加sitemap和feed插件9.添加404公益页面 搭建环境准备 Node.js 的安装和准备 git 的安装和准备 github账户的配置 配置Node.js 环境 下载Node.js 安装文件 安装完后，打开cmd，在打开的命令行界面中，输入12Node -vnpm -v 配置Git环境 安装git 同样，打开命令行界面检查是否安装正确，输入：1git --version gitHub账户的配置 已有，跳过 创建代码库，在repository name下填写 yourname.github.io注意：比如我的github名称是gdutxiaoxu ,这里你就填 gdutxiaoxu.github.io,如果你的名字是xujun，那你就填 xujun.github.io hexo安装 在自己认为合适的地方创建一个文件夹，这里我以E：/hexo 为例子讲解，首先在E盘目录下创建Hexo文件夹，并在命令行的窗口进入到该目录 在命令行输入： 1npm install hexo-cli -g 然后继续输入： 1npm install hexo --save hexo的相关配置 初始化hexo,继续上述操作： 12hexo initnpm install hexo生成和部署 12hexo g 生成hexo s 打开blog hexo与github page 联系起来大致分为一下几步： 配置git个人信息 配置deployment配置git个人信息 设置Git的user name和email：(如果是第一次的话)： 12git config --global user.name &quot;chanchanchanhhh&quot;git config --global user.email &quot;dzumin@hotmail.com&quot; 生成密钥 1ssh-keygen -t rsa -C &quot;gdutxiaoxu@163.com&quot; 打开github setting, 选择ssh密钥，添加密钥，并打开id_rsa文件将密钥复制并粘贴在描述栏。 配置Deployment1234deploy: type: git repo: git@github.com:yourname/yourname.github.io.git branch: master 安装一个扩展 1npm install hexo-deployer-git --save Net主题的配置在 Hexo 中有两份主要的配置文件，其名称都是_config.yml。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。为了描述方便，在以下说明中，将前者称为 站点配置文件， 后者称为 主题配置文件。1.安装NextHexo 安装主题的方式非常简单，只需要将主题文件拷贝至站点目录的 themes 目录下， 然后修改下配置文件即可。具体到 NexT 来说，安装步骤如下。 在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码12cd your-hexo-sitegit clone https://github.com/iissnan/hexo-theme-next themes/next 2.启用主题 与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开 站点配置文件， 找到 theme 字段，并将其值更改为 next。1theme: next]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
 </search>
