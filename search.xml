@@ -15,7 +15,13 @@
   <entry>
     <title><![CDATA[入坑java开发的自学之路]]></title>
     <url>%2F2019%2F09%2F05%2F%E5%85%A5%E5%9D%91java%E5%BC%80%E5%8F%91%E7%9A%84%E8%87%AA%E5%AD%A6%E4%B9%8B%E8%B7%AF%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[基础知识 编程语言：java、python、c 基本算法 基本网络知识：TCP/IP HTTP/HTTPS 基本设计模式 工具方面 操作系统：linux （centos/ubuntu\） 代码管理：git 持续集成：jenkins java的项目管理工具：Maven / Gradle 框架方面应用层框架 ssh spring + structs + hibernate ssm：spring springmvc mybatis spring boot 各种中间件 MQ 消息队列 RPC 通信框架 elasticsearch 数据库 搜索引擎 数据库 SQL: MySQL / postgre SQL NoSQL： Redis Menmcached mongodb 架构方面分布式/微服务架构 spring cloud dubbo rpc通信 虚拟化/容器化的技术 docker 容器化 K8S kubernetes 关于源码/性能 JDK源码以及部分设计思想 spring源码 jvm 细节与排错 高并发/高可用 书籍 java编程思想 java 并发编程实战 深入理解java虚拟机 函数式变成思维 tcp/ip详解 卷1 鸟哥linux私房菜]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Next主题设置]]></title>
