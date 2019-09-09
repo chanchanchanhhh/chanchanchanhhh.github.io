@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chan">
 <meta property="og:description" content="原生hexo并不支持数学公式，需要安装插件 mathJax。mathJax 是一款运行于浏览器中的开源数学符号渲染引擎，使用 mathJax 可以方便的在浏览器中嵌入数学公式。mathJax 使用网络字体产生高质量的排版，因此可适应各种分辨率，它的显示是基于文本的而非图片，因此显示效果更好。这些公式可以被搜索引擎使用，因此公式里的符号一样可以被搜索引擎检索到。  安装与配置 1$ npm">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-09T11:16:47.967Z">
+<meta property="og:updated_time" content="2019-09-09T11:31:08.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo插入数学公式">
 <meta name="twitter:description" content="原生hexo并不支持数学公式，需要安装插件 mathJax。mathJax 是一款运行于浏览器中的开源数学符号渲染引擎，使用 mathJax 可以方便的在浏览器中嵌入数学公式。mathJax 使用网络字体产生高质量的排版，因此可适应各种分辨率，它的显示是基于文本的而非图片，因此显示效果更好。这些公式可以被搜索引擎使用，因此公式里的符号一样可以被搜索引擎检索到。  安装与配置 1$ npm">
@@ -398,7 +398,48 @@
 <p>使用 ^ 表示上标，使用 _ 表示下标，如果上下标的内容多于一个字符，可以使用大括号括起来： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$f(x) = a_1x^n + a_2x^&#123;n-1&#125; + a_3x^&#123;n-2&#125;$$</span><br></pre></td></tr></table></figure></p>
 <p><span class="math display">\[f(x) = a_1x^n + a_2x^{n-1} + a_3x^{n-2}\]</span></p>
 <h2 id="括号">括号</h2>
-<p>在 markdown 语法中，, $, {, }, _都是有特殊含义的，所以需要加。小括号与方括号可以使用原始的() [] 大括号需要转义</p>
+<p>在 markdown 语法中，, $, {, }, _都是有特殊含义的，所以需要加。小括号与方括号可以使用原始的() [] 大括号需要转义 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\&#123;x*y\&#125;</span><br><span class="line">\lbrace x*y \rbrace</span><br></pre></td></tr></table></figure></p>
+<p>显示效果为{x*y}</p>
+<p>原始符号不会随着公式大小自动缩放，需要使用 和 来实现自动缩放： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$\left \lbrace \sum_&#123;i=0&#125;^n i^3 = \frac&#123;(n^2+n)(n+6)&#125;&#123;9&#125; \right \rbrace$$</span><br></pre></td></tr></table></figure></p>
+<p>效果：<span class="math display">\[\left \lbrace \sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9} \right \rbrace\]</span></p>
+<h4 id="分数与开方">分数与开方</h4>
+<p>可以使用或者 实现分数的显示： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$\frac xy$</span><br><span class="line">$ x+3 \over y+5 $</span><br></pre></td></tr></table></figure></p>
+<p>分别显示为：<span class="math inline">\(\frac xy\)</span>、$ x+3 y+5 $ 开方使用: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ \sqrt&#123;x^5&#125; $</span><br><span class="line">$ \sqrt[3]&#123;\frac xy&#125; $</span><br></pre></td></tr></table></figure></p>
+<p>分别显示为：$  <span class="math inline">\(、\)</span>  $</p>
+<h4 id="求和与积分">求和与积分</h4>
+<p>和使用,可加上下标，积分使用，双重积分用: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ \sum_&#123;i=0&#125;^n $</span><br><span class="line">$ \int_1^\infty $</span><br><span class="line">$ \iint_1^\infty $</span><br></pre></td></tr></table></figure></p>
+<p>分别显示:$ _{i=0}^n $ $ _1^$ $ _1^$</p>
+<h4 id="表格与矩阵">表格与矩阵</h4>
+<p>表格样式lcr表示居中，|加入一条竖线，，列之间用&amp;分隔，行之间用 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$\begin&#123;array&#125;&#123;c|lcr&#125;</span><br><span class="line">n &amp; \text&#123;Left&#125; &amp; \text&#123;Center&#125; &amp; \text&#123;Right&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">1 &amp; 1.97 &amp; 5 &amp; 12 \\\\</span><br><span class="line">2 &amp; -11 &amp; 19 &amp; -80 \\\\</span><br><span class="line">3 &amp; 70 &amp; 209 &amp; 1+i \\\\</span><br><span class="line">\end&#123;array&#125;$$</span><br></pre></td></tr></table></figure></p>
+<p>显示效果为：<span class="math display">\[\begin{array}{c|lcr}
+n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} \\\\
+\hline
+1 &amp; 1.97 &amp; 5 &amp; 12 \\\\
+2 &amp; -11 &amp; 19 &amp; -80 \\\\
+3 &amp; 70 &amp; 209 &amp; 1+i \\\\
+\end{array}\]</span></p>
+<p>矩阵显示和表格很相似 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$$\left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line">V_A \\\\</span><br><span class="line">V_B \\\\</span><br><span class="line">V_C \\\\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right] =</span><br><span class="line">\left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line">1 &amp; 0 &amp; L \\\\</span><br><span class="line">-cosψ &amp; sinψ &amp; L \\\\</span><br><span class="line">-cosψ &amp; -sinψ &amp; L</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right]</span><br><span class="line">\left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line">V_x \\\\</span><br><span class="line">V_y \\\\</span><br><span class="line">W \\\\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right] $$</span><br></pre></td></tr></table></figure></p>
+<p>显示效果：<span class="math display">\[\left[
+\begin{matrix}
+V_A \\\\
+V_B \\\\
+V_C \\\\
+\end{matrix}
+\right] =
+\left[
+\begin{matrix}
+1 &amp; 0 &amp; L \\\\
+-cosψ &amp; sinψ &amp; L \\\\
+-cosψ &amp; -sinψ &amp; L
+\end{matrix}
+\right]
+\left[
+\begin{matrix}
+V_x \\\\
+V_y \\\\
+W \\\\
+\end{matrix}
+\right] \]</span></p>
 
       
     </div>
@@ -569,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装与配置"><span class="nav-number">1.</span> <span class="nav-text">安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法格式"><span class="nav-number">3.</span> <span class="nav-text">语法格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上标与下标"><span class="nav-number">3.0.1.</span> <span class="nav-text">上标与下标</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#括号"><span class="nav-number">4.</span> <span class="nav-text">括号</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装与配置"><span class="nav-number">1.</span> <span class="nav-text">安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法格式"><span class="nav-number">3.</span> <span class="nav-text">语法格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上标与下标"><span class="nav-number">3.0.1.</span> <span class="nav-text">上标与下标</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#括号"><span class="nav-number">4.</span> <span class="nav-text">括号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分数与开方"><span class="nav-number">4.0.1.</span> <span class="nav-text">分数与开方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求和与积分"><span class="nav-number">4.0.2.</span> <span class="nav-text">求和与积分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格与矩阵"><span class="nav-number">4.0.3.</span> <span class="nav-text">表格与矩阵</span></a></li></ol></li></div>
             
 
           </div>
@@ -1112,7 +1153,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
