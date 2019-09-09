@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="english、中文">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="目标检测,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="学习汇总">
-<meta name="keywords" content="java、python、AI、CV">
+<meta name="description" content="前言 目标检测 目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的">
+<meta name="keywords" content="目标检测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSD原理与实现">
 <meta property="og:url" content="https://chanchanchanhhh.github.io/2019/09/08/SSD原理与实现/index.html">
 <meta property="og:site_name" content="chan">
-<meta property="og:description" content="学习汇总">
+<meta property="og:description" content="前言 目标检测 目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-08T13:22:50.723Z">
+<meta property="og:updated_time" content="2019-09-09T09:55:52.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSD原理与实现">
-<meta name="twitter:description" content="学习汇总">
+<meta name="twitter:description" content="前言 目标检测 目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>SSD原理与实现 | chan</title>
+  <title>SSD原理与实现 | chan</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -335,6 +335,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/目标检测与识别/" itemprop="url" rel="index">
+                    <span itemprop="name">目标检测与识别</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -362,7 +384,20 @@
       
 
       
-        
+        <h2 id="前言">前言</h2>
+<h4 id="目标检测">目标检测</h4>
+<p>目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。</p>
+<h4 id="贡献">贡献</h4>
+<ul>
+<li>相比Yolo，SSD采用CNN来直接进行检测，而不是像Yolo那样在全连接层之后做检测。</li>
+<li>SSD提取了不同尺度的特征图来做检测，大尺度特征图（较靠前的特征图）可以用来检测小物体，而小尺度特征图（较靠后的特征图）用来检测大物体</li>
+<li>SSD采用了不同尺度和长宽比的先验框（Prior boxes, Default boxes，在Faster R-CNN中叫做锚，Anchors）</li>
+</ul>
+<h4 id="相比yolo">相比yolo</h4>
+<ol type="1">
+<li>与Yolo最后采用全连接层不同，SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为的特征图，只需要采用 [公式] 这样比较小的卷积核得到检测值。</li>
+</ol>
+
       
     </div>
     
@@ -376,6 +411,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/目标检测/" rel="tag"># 目标检测</a>
+          
+        </div>
       
 
       
@@ -450,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -466,7 +516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -488,7 +538,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -511,6 +561,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标检测"><span class="nav-number">1.0.1.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贡献"><span class="nav-number">1.0.2.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相比yolo"><span class="nav-number">1.0.3.</span> <span class="nav-text">相比yolo</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1029,6 +1095,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

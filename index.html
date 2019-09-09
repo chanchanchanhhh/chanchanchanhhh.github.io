@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="english、中文">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -125,7 +125,7 @@
 
 
 
-  <title>chan</title>
+  <title>chan</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -144,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -295,6 +295,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chanchanchanhhh.github.io/2019/09/09/hexo插入数学公式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/09/hexo插入数学公式/" itemprop="url">hexo插入数学公式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-09T17:32:26+08:00">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>原生hexo并不支持数学公式，需要安装插件 mathJax。mathJax 是一款运行于浏览器中的开源数学符号渲染引擎，使用 mathJax 可以方便的在浏览器中嵌入数学公式。mathJax 使用网络字体产生高质量的排版，因此可适应各种分辨率，它的显示是基于文本的而非图片，因此显示效果更好。这些公式可以被搜索引擎使用，因此公式里的符号一样可以被搜索引擎检索到。</p>
+</blockquote>
+<h2 id="安装与配置">安装与配置</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>在站点配置文件 _config.yml 中添加： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  engine: &apos;mathjax&apos; # or &apos;katex&apos;</span><br><span class="line">  mathjax:</span><br><span class="line">    # src: custom_mathjax_source</span><br><span class="line">    config:</span><br><span class="line">      # MathJax config</span><br></pre></td></tr></table></figure></p>
+<p>在 next 主题配置文件中 themes/next-theme/_config.yml 中将 mathJax 设为 true: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># MathJax Support</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  per_page: false</span><br><span class="line">  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用">使用</h2>
+<p>公式插入格式： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$数学公式$ 行内 不独占一行</span><br><span class="line">$$数学公式$$ 行间 独占一行</span><br></pre></td></tr></table></figure></p>
+<h2 id="语法格式">语法格式</h2>
+<h4 id="上标与下标">上标与下标</h4>
+<p>使用 ^ 表示上标，使用 _ 表示下标，如果上下标的内容多于一个字符，可以使用大括号括起来： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$f(x) = a_1x^n + a_2x^&#123;n-1&#125; + a_3x^&#123;n-2&#125;$$</span><br></pre></td></tr></table></figure></p>
+<p><span class="math display">\[f(x) = a_1x^n + a_2x^{n-1} + a_3x^{n-2}\]</span></p>
+<h2 id="括号">括号</h2>
+<p>在 markdown 语法中，, $, {, }, _都是有特殊含义的，所以需要加。小括号与方括号可以使用原始的() [] 大括号需要转义</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chanchanchanhhh.github.io/2019/09/09/yolo的原理和实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -367,6 +523,7 @@
         
           
             
+
           
         
       
@@ -456,6 +613,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/目标检测与识别/" itemprop="url" rel="index">
+                    <span itemprop="name">目标检测与识别</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -485,7 +664,20 @@
       
         
           
-            
+            <h2 id="前言">前言</h2>
+<h4 id="目标检测">目标检测</h4>
+<p>目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。</p>
+<h4 id="贡献">贡献</h4>
+<ul>
+<li>相比Yolo，SSD采用CNN来直接进行检测，而不是像Yolo那样在全连接层之后做检测。</li>
+<li>SSD提取了不同尺度的特征图来做检测，大尺度特征图（较靠前的特征图）可以用来检测小物体，而小尺度特征图（较靠后的特征图）用来检测大物体</li>
+<li>SSD采用了不同尺度和长宽比的先验框（Prior boxes, Default boxes，在Faster R-CNN中叫做锚，Anchors）</li>
+</ul>
+<h4 id="相比yolo">相比yolo</h4>
+<ol type="1">
+<li>与Yolo最后采用全连接层不同，SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为的特征图，只需要采用 [公式] 这样比较小的卷积核得到检测值。</li>
+</ol>
+
           
         
       
@@ -625,37 +817,19 @@
 
       
         
-          
-            <h4 id="1-贡献"><a href="#1-贡献" class="headerlink" title="1.贡献"></a>1.贡献</h4><ul>
+          <h4 id="贡献">1.贡献</h4>
+<ul>
 <li>提出Position-sensitive score maps来解决目标检测的位置敏感性问题</li>
 <li>区域为基础，全卷积网络的two-state目标检测框架</li>
 <li>比faster-rcnn快2.5-20倍</li>
 </ul>
-<h4 id="2-R-FCN与传统two-state网络的异同点"><a href="#2-R-FCN与传统two-state网络的异同点" class="headerlink" title="2.R-FCN与传统two-state网络的异同点"></a>2.R-FCN与传统two-state网络的异同点</h4><p><img src="/2019/09/08/R-FCN学习及理解/1.jpg" alt><br><br>Faster R-rcnn是首个利用CNN来完成proposals的预测</p>
-<ul>
-<li>Fully Convolution subnetwork before RoI layer</li>
-<li>RoI-wise subnetwork</li>
-</ul>
-<p>1.第一部分直接用普通分类的卷积层，用来提取共享特征，然后一个ROI pooling layer在第一部分的最后一张特征图上进行提取针对各个Rois的特征向量，然后将所有Rois的特征向量，交由第二部分来处理（分类和回归）。<br></p>
-<p>2.第二部分一部都是全连接层，在最后有2个并行的loss函数：softmax和smoothL1，分别用来对每一个Roi进行回归和分类。这样就可以的得到每个ROi的真实类别和较为精确的坐标和长宽了。</p>
-<p>注意：rois是共享所有由基础分类网络生成的feature maps，而第二部分的Roi-wise subnetwork，它却不是所有Rois共享的，因为这一部分的就是给每个ROi进行分类和回归，所以不能共享计算。<br><br>首先问题就在于，第一部分的网络具有“位置不敏感性”–平移的不变性。<br><br>我的疑惑，translation-invariance代表什么，是指卷积网络是具有位置信息，但是全连接层是没有位置信息的？</p>
-<p>resnet论文解决方法：roi pooling layer不再放在卷积层和全连接之间，而是放在卷积层之间，样RoI Pooling Layer之前和之后都有卷积层，并且RoI Pooling Layer之后的卷积层不是共享计算的，它们是针对每个RoI进行特征提取的，所以这种网络设计，其RoI Pooling Layer之后就具有了“位置敏感性translation-variance”<br><br>缺点：测试速度很慢。</p>
-<h4 id="3-RFC网络设计"><a href="#3-RFC网络设计" class="headerlink" title="3.RFC网络设计"></a>3.RFC网络设计</h4><p><img src="/2019/09/08/R-FCN学习及理解/2.jpg" alt><br><br>设计思路：如果一个Roi含有一个类别c的物体，那么作者就将该ROi分类k*k个区域，分别表示该物体的各个部位<br><br>例子: 假设Roi中含有人这个物体，k=3，那么将”人” 划分为9个子区域，而将Roi划分为k^2个区域是希望这个Roi在其中的每一个区域都应该含有该类别c的物体的各个部位。当所有子区域都含有各自对应的该物体相应部位后，那么分类器才会判断为该类别。物体的各个部位和roi的子区域是映射关系。<br><br>我的疑惑：如何判断该子区域为该类别呢？</p>
-<h4 id="4-position-sensitive-score-map"><a href="#4-position-sensitive-score-map" class="headerlink" title="4.position-sensitive score map"></a>4.position-sensitive score map</h4><p>position-sensitive score map设计的核心思想：判断RoI子区域是否含有物体的相应部位”<br><br>R-FCN会在共享卷积层的最后再接上一层卷积层，而该卷积层就是“位置敏感得分图position-sensitive score map”</p>
-<p>score maps的意义：它就是一层卷积层，它的height和width和共享卷积层的一样，但是它的channels= k^2(C+1),那么C表示物体类别种数再加上1个背景类别，每个类别都有 k^2个score maps。每个score maps表示原图image中的哪些位置含有人的某一个部位，而每一个score map表示该score map对应的人体的某个部位有”高响应值”，也就是说每一个score map都是用来“描述人体的其中一个部位出现在该score map的何<br>处，而在出现的地方就有高响应值”。</p>
-<h4 id="5-Position-sensitive-RoI-pooling"><a href="#5-Position-sensitive-RoI-pooling" class="headerlink" title="5.Position-sensitive RoI pooling"></a>5.Position-sensitive RoI pooling</h4><p>pooling layer的作用：就是在该bin对应的score map上的子区域执行，且执行的是平均池化。第i个bin对应的第i个score map上找响应值，那么也就是在第i个score map上的“该第i个bin对应的位置”上进行池化操作，且池化是取“bin这个范围内的所有值的平均值”。对于每个类别，它都有k^2个score maps，那么对于每个类别，该类别的k^2个值都表示该RoI属于该类别的响应值，那么将这k^2个数相加就得到该类别的score，那么一共有C+1个scores，那么将这C+1个数使用简单的softmax函数就可以得到属于各个类别的概率了</p>
-<h4 id="6-position-sensitive-regression"><a href="#6-position-sensitive-regression" class="headerlink" title="6.position-sensitive regression"></a>6.position-sensitive regression</h4><p>在ResNet的共享卷积层的最后一层上，接上一个与position-sensitive score map并行的（sibling）score maps，该score maps用于regression，暂且命名为“regression score map”，而该regression score map的维度应当是4k^2 ,那么在经过Position-sensitive RoI pooling操作后，每一个RoI就会得到第4个数作为“该RoI的坐标和长宽的偏移量”了。</p>
-<h4 id="7-网络的训练"><a href="#7-网络的训练" class="headerlink" title="7.网络的训练"></a>7.网络的训练</h4><p>根据网络的loss公式，如果一个RoI含有人这个物体，那么该RoI通过“position-sensitive score map”+“Position-sensitive RoI pooling”得到的 [公式] 个值中的属于人的那个值必然会在softmax损失函数的要求下“变得尽量的大”，那么如何才能使得属于人的这个值尽量的大呢？那么我们现在就要想到，属于人的这个预测值是怎么来的？在前面的分析，我们已经知道它是通过Position-sensitive RoI pooling这种池化操作的来的，那么也就是说使得 [公式] 个值中属于人的那个值尽量大，必然会使得position-sensitive score map中属于人的那个score map上的“该RoI对应的位置区域的平均值”尽量大，从而也就是该score map上在该区域上的响应值尽量大，因为只有该区域的响应值大了，才能使得预测为人的概率大，才会降低softmax的loss。</p>
-<p>使用如上的损失函数，对于任意一个RoI，计算它的softmax损失，和“当其不属于背景时的回归损失”。这很简单，因为每个RoI都被指定属于某一个GT box或者属于背景，即先让GT box选择与其IoU最大的那个RoI，然后再对剩余RoI选择与GT box的IoU&gt;0.5的进行匹配，而剩下的RoI全部为背景类别。那么RoI有了label后，loss自然很容易计算出来。</p>
-<p>而唯一不同的就是，为了减少计算量，作者将所有RoIs的loss值都计算出来后，对其进行排序，并只对“最大的128个损失值对应的RoIs”执行反向传播操作，其它的则忽略。并且训练策略也是采用的Faster R-CNN中的4-step alternating training进行训练。</p>
-<p>在测试的时候，为了减少RoIs的数量，作者在RPN提取阶段就将RPN提取的大约2W个proposals进行过滤：</p>
-<p>去除超过图像边界的proposals<br>使用基于类别概率且阈值IoU=0.7的NMS过滤<br>按照类别概率选择top-N个proposals<br>所以在测试的时候，一般只剩下300个RoIs，当然这个数量是一个超参数。并且在R-FCN的输出300个预测框之后，仍然要对其使用NMS去除冗余的预测框。</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
-<li>trous 技巧<br><br>作者将最后1个池化层的步长从2减小到1，那么图像将从缩小32倍变成只缩小16倍，这样就提高了共享卷积层的输出分辨率。而这样做就要使用Atrous Convolution算法，具体参见论文Semantic Image Segmentation With Deep Convolutional Nets and Fully Connnected CRFS</li>
-<li>输入Image的RoI是如何映射到position-sensitive score map上的？<br><br>因为RoI的坐标应该相对于原始image的真实坐标，而Position-sensitive RoI pooling的池化操作却是利用RoI在position-sensitive score map上完成的，那么现在就必须有一个映射关系将输入image上的RoI映射到position-sensitive score map上，大致映射见下图（详情可参见原始图片中的ROI如何映射到到feature map?）：</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/08/R-FCN学习及理解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -796,6 +970,7 @@
         
           
             
+
           
         
       
@@ -935,7 +1110,8 @@
 
       
         
-          <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+          <h2 id="基础知识">基础知识</h2>
+<ul>
 <li>编程语言：java、python、c</li>
 <li>基本算法</li>
 <li>基本网络知识：TCP/IP HTTP/HTTPS</li>
@@ -1085,8 +1261,9 @@
 
       
         
-          <h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>npm install hexo-generator-searchdb –save<br>修改 站点配置 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+          <h3 id="搜索功能">搜索功能</h3>
+<h4 id="安装插件">安装插件</h4>
+<p>npm install hexo-generator-searchdb --save 修改 站点配置 文件 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/05/Next主题设置/#more" rel="contents">
@@ -1232,17 +1409,18 @@
 
       
         
-          <h2 id="hexo操作"><a href="#hexo操作" class="headerlink" title="hexo操作"></a>hexo操作</h2><ol>
-<li>hexo help  # 查看帮助<br></li>
-<li>hexo version  #查看Hexo的版本<br></li>
-<li>hexo algolia  # 更新search庫<br></li>
-<li>hexo new “postName” #新建文章<br></li>
-<li>hexo new post “title”  # 生成新文章：\source_posts\title.md，可省略post<br></li>
-<li>hexo new page “pageName” #新建页面<br></li>
+          <h2 id="hexo操作">hexo操作</h2>
+<ol type="1">
+<li>hexo help # 查看帮助<br></li>
+<li>hexo version #查看Hexo的版本<br></li>
+<li>hexo algolia # 更新search庫<br></li>
+<li>hexo new &quot;postName&quot; #新建文章<br></li>
+<li>hexo new post &quot;title&quot; # 生成新文章：_posts\title.md，可省略post<br></li>
+<li>hexo new page &quot;pageName&quot; #新建页面<br></li>
 <li>hexo clean #清除部署緩存<br></li>
 <li>hexo n == hexo new #新建文章<br></li>
 <li>hexo g == hexo generate #生成静态页面至public目录<br></li>
-<li>hexo s == hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br></li>
+<li>hexo s == hexo server #开启预览访问端口（默认端口4000，'ctrl + c'关闭server）<br></li>
 <li>hexo d == hexo deploy #将.deploy目录部署到GitHub<br></li>
 <li>hexo d -g #生成加部署<br></li>
 <li>hexo s -g #生成加预览<br></li></ol>
@@ -1391,7 +1569,10 @@
 
       
         
-          <h2 id="markdown基本语法和操作"><a href="#markdown基本语法和操作" class="headerlink" title="markdown基本语法和操作"></a>markdown基本语法和操作</h2><h3 id="一、基本语法"><a href="#一、基本语法" class="headerlink" title="一、基本语法"></a>一、基本语法</h3><h3 id="1-1-字体大小、颜色、类型、加粗、倾斜、删除"><a href="#1-1-字体大小、颜色、类型、加粗、倾斜、删除" class="headerlink" title="1.1 字体大小、颜色、类型、加粗、倾斜、删除"></a>1.1 字体大小、颜色、类型、加粗、倾斜、删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;font size=5&gt; Hello&lt;br&gt;</span><br><span class="line">&lt;font color=red&gt;color&lt;br&gt;</span><br><span class="line">&lt;font face=&quot;微软雅黑&quot;&gt;微软雅黑&lt;br&gt;</span><br><span class="line">**内容** 加粗&lt;br&gt;</span><br><span class="line">*内容* 倾斜&lt;br&gt;</span><br><span class="line">~~内容~~</span><br></pre></td></tr></table></figure>
+          <h2 id="markdown基本语法和操作">markdown基本语法和操作</h2>
+<h3 id="一基本语法">一、基本语法</h3>
+<h3 id="字体大小颜色类型加粗倾斜删除">1.1 字体大小、颜色、类型、加粗、倾斜、删除</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;font size=5&gt; Hello&lt;br&gt;</span><br><span class="line">&lt;font color=red&gt;color&lt;br&gt;</span><br><span class="line">&lt;font face=&quot;微软雅黑&quot;&gt;微软雅黑&lt;br&gt;</span><br><span class="line">**内容** 加粗&lt;br&gt;</span><br><span class="line">*内容* 倾斜&lt;br&gt;</span><br><span class="line">~~内容~~</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/05/markdown基本语法和操作/#more" rel="contents">
@@ -1537,7 +1718,9 @@
 
       
         
-          <h2 id="hexo部署github博客"><a href="#hexo部署github博客" class="headerlink" title="hexo部署github博客"></a>hexo部署github博客</h2><h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
+          <h2 id="hexo部署github博客">hexo部署github博客</h2>
+<h3 id="一简介">一、简介</h3>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/04/hexo-github配置/#more" rel="contents">
@@ -1624,7 +1807,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1646,7 +1829,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2183,6 +2366,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
