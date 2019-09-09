@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="全卷积,目标检测,">
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="学习汇总">
-<meta name="keywords" content="java、python、AI、CV">
+<meta name="description" content="1.贡献 提出Position-sensitive score maps来解决目标检测的位置敏感性问题 区域为基础，全卷积网络的two-state目标检测框架 比faster-rcnn快2.5-20倍  2.R-FCN与传统two-state网络的异同点Faster R-rcnn是首个利用CNN来完成proposals的预测  Fully Convolution subnetwork before">
+<meta name="keywords" content="全卷积,目标检测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R-FCN学习及理解">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/R-FCN学习及理解/index.html">
 <meta property="og:site_name" content="chan">
-<meta property="og:description" content="学习汇总">
+<meta property="og:description" content="1.贡献 提出Position-sensitive score maps来解决目标检测的位置敏感性问题 区域为基础，全卷积网络的two-state目标检测框架 比faster-rcnn快2.5-20倍  2.R-FCN与传统two-state网络的异同点Faster R-rcnn是首个利用CNN来完成proposals的预测  Fully Convolution subnetwork before">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-08T04:32:08.307Z">
+<meta property="og:image" content="http://yoursite.com/.com//1.jpg">
+<meta property="og:image" content="http://yoursite.com/.com//2.jpg">
+<meta property="og:updated_time" content="2019-09-09T08:35:22.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R-FCN学习及理解">
-<meta name="twitter:description" content="学习汇总">
+<meta name="twitter:description" content="1.贡献 提出Position-sensitive score maps来解决目标检测的位置敏感性问题 区域为基础，全卷积网络的two-state目标检测框架 比faster-rcnn快2.5-20倍  2.R-FCN与传统two-state网络的异同点Faster R-rcnn是首个利用CNN来完成proposals的预测  Fully Convolution subnetwork before">
+<meta name="twitter:image" content="http://yoursite.com/.com//1.jpg">
 
 
 
@@ -335,6 +338,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/目标检测与识别/" itemprop="url" rel="index">
+                    <span itemprop="name">目标检测与识别</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -362,7 +387,35 @@
       
 
       
-        
+        <h4 id="1-贡献"><a href="#1-贡献" class="headerlink" title="1.贡献"></a>1.贡献</h4><ul>
+<li>提出Position-sensitive score maps来解决目标检测的位置敏感性问题</li>
+<li>区域为基础，全卷积网络的two-state目标检测框架</li>
+<li>比faster-rcnn快2.5-20倍</li>
+</ul>
+<h4 id="2-R-FCN与传统two-state网络的异同点"><a href="#2-R-FCN与传统two-state网络的异同点" class="headerlink" title="2.R-FCN与传统two-state网络的异同点"></a>2.R-FCN与传统two-state网络的异同点</h4><p><img src="/.com//1.jpg" alt><br><br>Faster R-rcnn是首个利用CNN来完成proposals的预测</p>
+<ul>
+<li>Fully Convolution subnetwork before RoI layer</li>
+<li>RoI-wise subnetwork</li>
+</ul>
+<p>1.第一部分直接用普通分类的卷积层，用来提取共享特征，然后一个ROI pooling layer在第一部分的最后一张特征图上进行提取针对各个Rois的特征向量，然后将所有Rois的特征向量，交由第二部分来处理（分类和回归）。<br></p>
+<p>2.第二部分一部都是全连接层，在最后有2个并行的loss函数：softmax和smoothL1，分别用来对每一个Roi进行回归和分类。这样就可以的得到每个ROi的真实类别和较为精确的坐标和长宽了。</p>
+<p>注意：rois是共享所有由基础分类网络生成的feature maps，而第二部分的Roi-wise subnetwork，它却不是所有Rois共享的，因为这一部分的就是给每个ROi进行分类和回归，所以不能共享计算。<br><br>首先问题就在于，第一部分的网络具有“位置不敏感性”–平移的不变性。<br><br>我的疑惑，translation-invariance代表什么，是指卷积网络是具有位置信息，但是全连接层是没有位置信息的？</p>
+<p>resnet论文解决方法：roi pooling layer不再放在卷积层和全连接之间，而是放在卷积层之间，样RoI Pooling Layer之前和之后都有卷积层，并且RoI Pooling Layer之后的卷积层不是共享计算的，它们是针对每个RoI进行特征提取的，所以这种网络设计，其RoI Pooling Layer之后就具有了“位置敏感性translation-variance”<br><br>缺点：测试速度很慢。</p>
+<h4 id="3-RFC网络设计"><a href="#3-RFC网络设计" class="headerlink" title="3.RFC网络设计"></a>3.RFC网络设计</h4><p><img src="/.com//2.jpg" alt><br><br>设计思路：如果一个Roi含有一个类别c的物体，那么作者就将该ROi分类k*k个区域，分别表示该物体的各个部位<br><br>例子: 假设Roi中含有人这个物体，k=3，那么将”人” 划分为9个子区域，而将Roi划分为k^2个区域是希望这个Roi在其中的每一个区域都应该含有该类别c的物体的各个部位。当所有子区域都含有各自对应的该物体相应部位后，那么分类器才会判断为该类别。物体的各个部位和roi的子区域是映射关系。<br><br>我的疑惑：如何判断该子区域为该类别呢？</p>
+<h4 id="4-position-sensitive-score-map"><a href="#4-position-sensitive-score-map" class="headerlink" title="4.position-sensitive score map"></a>4.position-sensitive score map</h4><p>position-sensitive score map设计的核心思想：判断RoI子区域是否含有物体的相应部位”<br><br>R-FCN会在共享卷积层的最后再接上一层卷积层，而该卷积层就是“位置敏感得分图position-sensitive score map”</p>
+<p>score maps的意义：它就是一层卷积层，它的height和width和共享卷积层的一样，但是它的channels= k^2(C+1),那么C表示物体类别种数再加上1个背景类别，每个类别都有 k^2个score maps。每个score maps表示原图image中的哪些位置含有人的某一个部位，而每一个score map表示该score map对应的人体的某个部位有”高响应值”，也就是说每一个score map都是用来“描述人体的其中一个部位出现在该score map的何<br>处，而在出现的地方就有高响应值”。</p>
+<h4 id="5-Position-sensitive-RoI-pooling"><a href="#5-Position-sensitive-RoI-pooling" class="headerlink" title="5.Position-sensitive RoI pooling"></a>5.Position-sensitive RoI pooling</h4><p>pooling layer的作用：就是在该bin对应的score map上的子区域执行，且执行的是平均池化。第i个bin对应的第i个score map上找响应值，那么也就是在第i个score map上的“该第i个bin对应的位置”上进行池化操作，且池化是取“bin这个范围内的所有值的平均值”。对于每个类别，它都有k^2个score maps，那么对于每个类别，该类别的k^2个值都表示该RoI属于该类别的响应值，那么将这k^2个数相加就得到该类别的score，那么一共有C+1个scores，那么将这C+1个数使用简单的softmax函数就可以得到属于各个类别的概率了</p>
+<h4 id="6-position-sensitive-regression"><a href="#6-position-sensitive-regression" class="headerlink" title="6.position-sensitive regression"></a>6.position-sensitive regression</h4><p>在ResNet的共享卷积层的最后一层上，接上一个与position-sensitive score map并行的（sibling）score maps，该score maps用于regression，暂且命名为“regression score map”，而该regression score map的维度应当是4k^2 ,那么在经过Position-sensitive RoI pooling操作后，每一个RoI就会得到第4个数作为“该RoI的坐标和长宽的偏移量”了。</p>
+<h4 id="7-网络的训练"><a href="#7-网络的训练" class="headerlink" title="7.网络的训练"></a>7.网络的训练</h4><p>根据网络的loss公式，如果一个RoI含有人这个物体，那么该RoI通过“position-sensitive score map”+“Position-sensitive RoI pooling”得到的 [公式] 个值中的属于人的那个值必然会在softmax损失函数的要求下“变得尽量的大”，那么如何才能使得属于人的这个值尽量的大呢？那么我们现在就要想到，属于人的这个预测值是怎么来的？在前面的分析，我们已经知道它是通过Position-sensitive RoI pooling这种池化操作的来的，那么也就是说使得 [公式] 个值中属于人的那个值尽量大，必然会使得position-sensitive score map中属于人的那个score map上的“该RoI对应的位置区域的平均值”尽量大，从而也就是该score map上在该区域上的响应值尽量大，因为只有该区域的响应值大了，才能使得预测为人的概率大，才会降低softmax的loss。</p>
+<p>使用如上的损失函数，对于任意一个RoI，计算它的softmax损失，和“当其不属于背景时的回归损失”。这很简单，因为每个RoI都被指定属于某一个GT box或者属于背景，即先让GT box选择与其IoU最大的那个RoI，然后再对剩余RoI选择与GT box的IoU&gt;0.5的进行匹配，而剩下的RoI全部为背景类别。那么RoI有了label后，loss自然很容易计算出来。</p>
+<p>而唯一不同的就是，为了减少计算量，作者将所有RoIs的loss值都计算出来后，对其进行排序，并只对“最大的128个损失值对应的RoIs”执行反向传播操作，其它的则忽略。并且训练策略也是采用的Faster R-CNN中的4-step alternating training进行训练。</p>
+<p>在测试的时候，为了减少RoIs的数量，作者在RPN提取阶段就将RPN提取的大约2W个proposals进行过滤：</p>
+<p>去除超过图像边界的proposals<br>使用基于类别概率且阈值IoU=0.7的NMS过滤<br>按照类别概率选择top-N个proposals<br>所以在测试的时候，一般只剩下300个RoIs，当然这个数量是一个超参数。并且在R-FCN的输出300个预测框之后，仍然要对其使用NMS去除冗余的预测框。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
+<li>trous 技巧<br><br>作者将最后1个池化层的步长从2减小到1，那么图像将从缩小32倍变成只缩小16倍，这样就提高了共享卷积层的输出分辨率。而这样做就要使用Atrous Convolution算法，具体参见论文Semantic Image Segmentation With Deep Convolutional Nets and Fully Connnected CRFS</li>
+<li>输入Image的RoI是如何映射到position-sensitive score map上的？<br><br>因为RoI的坐标应该相对于原始image的真实坐标，而Position-sensitive RoI pooling的池化操作却是利用RoI在position-sensitive score map上完成的，那么现在就必须有一个映射关系将输入image上的RoI映射到position-sensitive score map上，大致映射见下图（详情可参见原始图片中的ROI如何映射到到feature map?）：</li>
+</ol>
+
       
     </div>
     
@@ -376,6 +429,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/全卷积/" rel="tag"># 全卷积</a>
+          
+            <a href="/tags/目标检测/" rel="tag"># 目标检测</a>
+          
+        </div>
       
 
       
@@ -450,8 +511,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,7 +558,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -511,6 +581,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-贡献"><span class="nav-number">1.</span> <span class="nav-text">1.贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-R-FCN与传统two-state网络的异同点"><span class="nav-number">2.</span> <span class="nav-text">2.R-FCN与传统two-state网络的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-RFC网络设计"><span class="nav-number">3.</span> <span class="nav-text">3.RFC网络设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-position-sensitive-score-map"><span class="nav-number">4.</span> <span class="nav-text">4.position-sensitive score map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Position-sensitive-RoI-pooling"><span class="nav-number">5.</span> <span class="nav-text">5.Position-sensitive RoI pooling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-position-sensitive-regression"><span class="nav-number">6.</span> <span class="nav-text">6.position-sensitive regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-网络的训练"><span class="nav-number">7.</span> <span class="nav-text">7.网络的训练</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
