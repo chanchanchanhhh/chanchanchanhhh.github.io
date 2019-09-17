@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="chan">
 <meta property="og:description" content="关于无人贩卖机的理解 SSD算法及其在铁路场景异常目标检测中的应用研究 研究过程手机了铁路场景和普通场景下柏寒待检测类别的目标图像，结合迁移学习的思想，对SSD网络采取不同的方法进行了多次训练。 对小尺度的目标检测效果不佳，改进性推出了多块SSD算法， 基于深度学习的视觉目标检测与识别关键技术及应用 摘要 论文工作 - 基于动态空间约束的图像目标检测算法，解决多检测问题，同时使用两个平行">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-17T06:19:15.656Z">
+<meta property="og:updated_time" content="2019-09-17T07:11:16.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标检测论文归纳">
 <meta name="twitter:description" content="关于无人贩卖机的理解 SSD算法及其在铁路场景异常目标检测中的应用研究 研究过程手机了铁路场景和普通场景下柏寒待检测类别的目标图像，结合迁移学习的思想，对SSD网络采取不同的方法进行了多次训练。 对小尺度的目标检测效果不佳，改进性推出了多块SSD算法， 基于深度学习的视觉目标检测与识别关键技术及应用 摘要 论文工作 - 基于动态空间约束的图像目标检测算法，解决多检测问题，同时使用两个平行">
@@ -384,23 +384,32 @@
       
 
       
-        <h2 id="关于无人贩卖机的理解"><font color="Silver">关于无人贩卖机的理解</font></h2>
+        <h2 id="关于无人贩卖机的理解">关于无人贩卖机的理解</h2>
 <h4 id="ssd算法及其在铁路场景异常目标检测中的应用研究">SSD算法及其在铁路场景异常目标检测中的应用研究</h4>
 <p>研究过程手机了铁路场景和普通场景下柏寒待检测类别的目标图像，结合迁移学习的思想，对SSD网络采取不同的方法进行了多次训练。 对小尺度的目标检测效果不佳，改进性推出了多块SSD算法，</p>
 <h4 id="基于深度学习的视觉目标检测与识别关键技术及应用">基于深度学习的视觉目标检测与识别关键技术及应用</h4>
 <h5 id="摘要">摘要</h5>
 <p>论文工作 - 基于动态空间约束的图像目标检测算法，解决多检测问题，同时使用两个平行的分类网络来解决严重的类别不平衡 - 提升一阶段的目标检测运行速度，同时不能以牺牲目标检测器的准确率为代价 - 提出自调整局部特征融合算法，解决视频上遇到问题，解决退化帧问题，模糊散焦 - 基于特征融合的视频多人姿势估计方法 - 自顶向下，通过目标检测网络获得每个人的候选框，再用单人姿态估计网络预测每个人的关键点 - 自底向上，直接预测所有人的关键点的位置和类别，然后根据树模型或者图模型把这些关键点组合每个人的姿态。</p>
 <h5 id="卷积网络历史">卷积网络历史</h5>
-<p>由于以前的数据集规模较小，卷积网路并未广泛使用。随着大规模高分辨率数据集的发布和计算机能力的提升，深度卷积神经网络开始主导计算机视觉的各个研究领域。IMageNet分类数据集包含120万张高分辨图像，总共包含1000个不同类别的物体。<br> ALexNet使用5个卷积层和3个全连接层，获得2012年的ImageNet分类比赛冠军，他的误差率为15.3%。<br> VGG整个网络只使用3×3卷积层，没有用大感受野的卷积层。因为两个3×3的卷积层就具有5×5的感受野。一是降低了模型参数，加快运行速度。另一方面由于使用更多的非线性函数，增加了网络的表达能力。并且vgg使用5个最大池化层，把所有卷积层分成5个阶段，每个阶段卷积层比前一个阶段的卷积层包含更多的通道数。后来多遵循这些设计准则，只改变每个阶段的自网络结构。<br> batch normalization解决了模型的收敛问题之后，通过堆叠更多的卷积层应该能盖塞模型的性能。然而，实验结果表明，模型深度的增加反而导致泛化能力降低。 残差网络结构ResNet，使用跨层连接把前面卷积层的输出直接传递到后面的卷积层。与使用几个堆叠的卷积层来表示所需的潜在映射相比，使用残差映射更容易优化。 ResNeXt结合了ResNet和Xception的优点，设计了一个多分支的残差网络结构，每个分支具有相同的拓扑结果。 ###### 图像的目标检测 主要分为二阶段和一阶段目标检测器<br> 以R-CNN及其变体为代表的二阶段目标检测网络。二阶段方法把目标检测任务分为两个子任务：第一阶段，生成预测框，该阶段主要负责感兴趣的目标物体检测。第二阶段，使用区域自网络负责候选框的分类和回归。对于一张图片来说，第二阶段区域自网络需要执行几百次，导致二阶段目标检测器运行缓慢。R-FCN使用位置敏感得分图实现了区域自网络的计算共享。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网络共享的意思，就像第一部分的基础网络VGG，只需要进行一次向前运算就可以得到所有rois。但是第二部分的子网络，却不是所有ROIS共享，需要对每个roi进行分类和回归，所以不能进行共享计算。</span><br></pre></td></tr></table></figure></p>
-<p>与二阶段相比，一阶段目标检测网络直接预测感兴趣目标物体的边界框和类别。yolo使用定制的网络结构和强空间约束。与yolo相比，SSD使用特征金字塔来预测不同大小的物体。<br> 对于计算能力和内存均受限的移动设备来说，我们需要更高效的网络结构。ShuffleNet和MobileNet专为移动设备设计的高效网络。 ___ ##### 视频目标检测 相对于静止图像相比，视频中可能出现遇到物体外观退化，比如模糊、散焦、遮挡和罕见外观。<font color="yellow">量化实验表明,<font color="Silver">由于连续的视频帧中包含同一物体的大量信息，当前的视频目标检测算法以图像目标检测网络为基础，利用视频中的时间信息来降低退化帧的影响，也可以利用视频中冗余信息来提升模型的速度。<br> <font color="yellow">DFF<font color="Silver">认为视频中相邻帧的特征包含大量的相同信息，DFF只使用特征提取网络提取关键帧的特征，然后用光流算法把关键帧的特征的特征映射传播到非关键帧。<br> <font color="yellow">FGFA<font color="Silver">提取每一帧图像的特征，还融合了多帧空间对齐后的相邻帧的特点。<br></font></font></font></font></font></font></p>
+<p>由于以前的数据集规模较小，卷积网路并未广泛使用。随着大规模高分辨率数据集的发布和计算机能力的提升，深度卷积神经网络开始主导计算机视觉的各个研究领域。IMageNet分类数据集包含120万张高分辨图像，总共包含1000个不同类别的物体。<br> ALexNet使用5个卷积层和3个全连接层，获得2012年的ImageNet分类比赛冠军，他的误差率为15.3%。<br> VGG整个网络只使用3×3卷积层，没有用大感受野的卷积层。因为两个3×3的卷积层就具有5×5的感受野。一是降低了模型参数，加快运行速度。另一方面由于使用更多的非线性函数，增加了网络的表达能力。并且vgg使用5个最大池化层，把所有卷积层分成5个阶段，每个阶段卷积层比前一个阶段的卷积层包含更多的通道数。后来多遵循这些设计准则，只改变每个阶段的自网络结构。<br> batch normalization解决了模型的收敛问题之后，通过堆叠更多的卷积层应该能盖塞模型的性能。然而，实验结果表明，模型深度的增加反而导致泛化能力降低。 残差网络结构ResNet，使用跨层连接把前面卷积层的输出直接传递到后面的卷积层。与使用几个堆叠的卷积层来表示所需的潜在映射相比，使用残差映射更容易优化。 ResNeXt结合了ResNet和Xception的优点，设计了一个多分支的残差网络结构，每个分支具有相同的拓扑结果。 ____ ##### 图像的目标检测 主要分为二阶段和一阶段目标检测器<br> 以R-CNN及其变体为代表的二阶段目标检测网络。二阶段方法把目标检测任务分为两个子任务：第一阶段，生成预测框，该阶段主要负责感兴趣的目标物体检测。第二阶段，使用区域自网络负责候选框的分类和回归。对于一张图片来说，第二阶段区域自网络需要执行几百次，导致二阶段目标检测器运行缓慢。R-FCN使用位置敏感得分图实现了区域自网络的计算共享。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网络共享的意思，就像第一部分的基础网络VGG，只需要进行一次向前运算就可以得到所有rois。但是第二部分的子网络，却不是所有ROIS共享，需要对每个roi进行分类和回归，所以不能进行共享计算。</span><br></pre></td></tr></table></figure></p>
+<p>与二阶段相比，一阶段目标检测网络直接预测感兴趣目标物体的边界框和类别。yolo使用定制的网络结构和强空间约束。与yolo相比，SSD使用特征金字塔来预测不同大小的物体。<br> 对于计算能力和内存均受限的移动设备来说，我们需要更高效的网络结构。ShuffleNet和MobileNet专为移动设备设计的高效网络。 ___ ##### 视频目标检测 相对于静止图像相比，视频中可能出现遇到物体外观退化，比如模糊、散焦、遮挡和罕见外观。<font color="yellow">量化实验表明,<font color="Silver">由于连续的视频帧中包含同一物体的大量信息，当前的视频目标检测算法以图像目标检测网络为基础，利用视频中的时间信息来降低退化帧的影响，也可以利用视频中冗余信息来提升模型的速度。<br> <font color="yellow">DFF</font>认为视频中相邻帧的特征包含大量的相同信息，DFF只使用特征提取网络提取关键帧的特征，然后用光流算法把关键帧的特征的特征映射传播到非关键帧。<br> <font color="yellow">FGFA</font>提取每一帧图像的特征，还融合了多帧空间对齐后的相邻帧的特点。<br></font></font></p>
 <h5 id="基于动态空间约束的图像目标检测算法">基于动态空间约束的图像目标检测算法</h5>
-<p>SSD的速度限制于多检测问题上。现在多检测问题已经成为i阶段目标检测器速度提升的主要障碍。人们已经提出了许多方法来解决多检测问题。 - 只保留每个特征金字塔层前1000个候选预测边界框。 - 使用一个专用的自网络来预测每个默认边界框是否包含物体，以此来降低搜索空间。 - 使用强空间约束来解决多检测问题</p>
-<p><font color="red">疑问，为什么用动态空间约束过滤掉绝大多数冗余的正默认边框，剩下的是高置信得分和低重叠度。 <font color="Silver">经过动态空间约束后，正样本个数减少，加剧了类别不平衡。难例挖掘或者焦点损失函数来缓解类别不平衡。使用连个平行的分类器来解决类别不平衡问题。一个是专门负责背景的，一个负责正默认框的。 ##### yolo yolo使用强空间约束来解决多检测问题。yolo将整个输入图像划分为S×S的网格，每个网格单元生成多个默认边界框。只有真实边界框的中心点坐标位于该网格单元，才把真实边界框与该网格单元具有最高交叉联合iou重叠度的默认边界框匹配。</font></font></p>
+<p>SSD的速度限制于多检测问题上。现在多检测问题已经成为1阶段目标检测器速度提升的主要障碍。人们已经提出了许多方法来解决多检测问题。 - 只保留每个特征金字塔层前1000个候选预测边界框。 - 使用一个专用的自网络来预测每个默认边界框是否包含物体，以此来降低搜索空间。 - 使用强空间约束来解决多检测问题</p>
+<p><font color="red">疑问，为什么用动态空间约束过滤掉绝大多数冗余的正默认边框，剩下的是高置信得分和低重叠度。<br></font></p>
+<p>经过动态空间约束后，正样本个数减少，加剧了类别不平衡。难例挖掘或者焦点损失函数来缓解类别不平衡。使用连个平行的分类器来解决类别不平衡问题。一个是专门负责背景的，一个负责正默认框的。</p>
+<h5 id="yolo">yolo</h5>
+<p>yolo使用强空间约束来解决多检测问题。yolo将整个输入图像划分为S×S的网格，每个网格单元生成多个默认边界框。只有真实边界框的中心点坐标位于该网格单元，才把真实边界框与该网格单元具有最高交叉联合iou重叠度的默认边界框匹配。</p>
 <h5 id="结果">结果</h5>
 <p>pascal voc2007数据集上实验结果对比 - 300*300的图片，准确率超过ssd，增幅为0.8%mAP ___</p>
 <h2 id="基于深度学习的视频目标检测算法研究与应用">基于深度学习的视频目标检测算法研究与应用</h2>
 <h5 id="背景">背景</h5>
-<p>传统的</p>
+<p>传统的视频监控系统仅仅包括对视频数据的捕获、保存、传输和显示，人工实现对视频内容的分析识别。智能监控系统为视频西西的自动分析与处理提供了重要思路。 &gt; 基于深度学习的目标跟踪方法研究现状与展望</p>
+<h5 id="研究工作">研究工作</h5>
+<p>在已有的物体识别、目标检测和目标跟踪技术基础上，进一步对视频中物体的目标检测和行为跟踪问题深入研究，实现统一的深度框架下监控范围内运动目标检测与轨迹跟踪，研究其中深度网络结构的改进思想，提高模型结构的准确度和使用性能。具体表现 - 采用深度网络结构中的卷积操作对视频、图像进行特征提取 - 在此基础上融合区域建议算法实现对出现的所有目标对象进行边界标定 - 最后结合目标跟踪技术得到时间序列上运动目标完整的运动轨迹。</p>
+<h5 id="研究现状">研究现状</h5>
+<p>不同于对静态图像的目标检测问题，视频中的目标检测往往面对着更多的处理难题： - 视频数据集中含有更多的帧图像文件，由于快速照相或物体运动引起的运动模糊、光照问题 - 网络视频剪辑拥有比静态相片质量更差的画质，以及物体</p>
+<h5 id="相关参数">相关参数</h5>
+<p>数据库：IMageNet Large Scale Visual Recognition Challenge(ILSVRC)</p>
 
       
     </div>
@@ -569,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于无人贩卖机的理解"><span class="nav-number">1.</span> <span class="nav-text">关于无人贩卖机的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssd算法及其在铁路场景异常目标检测中的应用研究"><span class="nav-number">1.0.1.</span> <span class="nav-text">SSD算法及其在铁路场景异常目标检测中的应用研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于深度学习的视觉目标检测与识别关键技术及应用"><span class="nav-number">1.0.2.</span> <span class="nav-text">基于深度学习的视觉目标检测与识别关键技术及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#摘要"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#卷积网络历史"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">卷积网络历史</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于动态空间约束的图像目标检测算法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">基于动态空间约束的图像目标检测算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结果"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#基于深度学习的视频目标检测算法研究与应用"><span class="nav-number">2.</span> <span class="nav-text">基于深度学习的视频目标检测算法研究与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">背景</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于无人贩卖机的理解"><span class="nav-number">1.</span> <span class="nav-text">关于无人贩卖机的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssd算法及其在铁路场景异常目标检测中的应用研究"><span class="nav-number">1.0.1.</span> <span class="nav-text">SSD算法及其在铁路场景异常目标检测中的应用研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于深度学习的视觉目标检测与识别关键技术及应用"><span class="nav-number">1.0.2.</span> <span class="nav-text">基于深度学习的视觉目标检测与识别关键技术及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#摘要"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#卷积网络历史"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">卷积网络历史</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于动态空间约束的图像目标检测算法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">基于动态空间约束的图像目标检测算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#yolo"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">yolo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结果"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#基于深度学习的视频目标检测算法研究与应用"><span class="nav-number">2.</span> <span class="nav-text">基于深度学习的视频目标检测算法研究与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#研究工作"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">研究工作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#研究现状"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">研究现状</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关参数"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">相关参数</span></a></li></ol></li></div>
             
 
           </div>
@@ -609,6 +618,16 @@
 
   <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
 
 
 
