@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="语义分割,全卷积,">
+  <meta name="keywords" content="对象和类,">
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="语义分割,全卷积">
+<meta name="description" content="python类 定义类 类是对一群具有相同特征或者行为的事物的 一个统称。是抽象的，不能直接使用。 123456789类的主要作用是表示某些特征和行为，在python中特征被称为属性行为被称为方法class 类名：def 方法1(self, 参数列表)    passdef 方法2(self, 参数列表)    pass 类属性 12class human(object):    tais">
+<meta name="keywords" content="对象和类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FCN的学习及理解">
-<meta property="og:url" content="https://chanchanchanhhh.github.io/2019/09/08/FCN的学习及理解/index.html">
+<meta property="og:title" content="python中对象和类">
+<meta property="og:url" content="https://chanchanchanhhh.github.io/2019/09/14/python中对象和类/index.html">
 <meta property="og:site_name" content="chan">
+<meta property="og:description" content="python类 定义类 类是对一群具有相同特征或者行为的事物的 一个统称。是抽象的，不能直接使用。 123456789类的主要作用是表示某些特征和行为，在python中特征被称为属性行为被称为方法class 类名：def 方法1(self, 参数列表)    passdef 方法2(self, 参数列表)    pass 类属性 12class human(object):    tais">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-09T08:35:16.446Z">
+<meta property="og:updated_time" content="2019-09-17T06:19:13.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FCN的学习及理解">
+<meta name="twitter:title" content="python中对象和类">
+<meta name="twitter:description" content="python类 定义类 类是对一群具有相同特征或者行为的事物的 一个统称。是抽象的，不能直接使用。 123456789类的主要作用是表示某些特征和行为，在python中特征被称为属性行为被称为方法class 类名：def 方法1(self, 参数列表)    passdef 方法2(self, 参数列表)    pass 类属性 12class human(object):    tais">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://chanchanchanhhh.github.io/2019/09/08/FCN的学习及理解/">
+  <link rel="canonical" href="https://chanchanchanhhh.github.io/2019/09/14/python中对象和类/">
 
 
 
 
 
-  <title>FCN的学习及理解 | chan</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>python中对象和类 | chan</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -292,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chanchanchanhhh.github.io/2019/09/08/FCN的学习及理解/">
+    <link itemprop="mainEntityOfPage" href="https://chanchanchanhhh.github.io/2019/09/14/python中对象和类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chan">
@@ -309,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FCN的学习及理解</h1>
+          <h1 class="post-title" itemprop="name headline">python中对象和类</h1>
         
 
         <div class="post-meta">
@@ -321,8 +324,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T10:53:34+08:00">
-                2019-09-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-14T13:18:32+08:00">
+                2019-09-14
               </time>
             
 
@@ -344,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/目标检测与识别/" itemprop="url" rel="index">
-                    <span itemprop="name">目标检测与识别</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -381,7 +384,23 @@
       
 
       
-        
+        <h2 id="python类">python类</h2>
+<h3 id="定义类">定义类</h3>
+<p>类是对一群具有相同特征或者行为的事物的 一个统称。是抽象的，不能直接使用。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">类的主要作用是表示某些特征和行为，在python中</span><br><span class="line">特征被称为属性</span><br><span class="line">行为被称为方法</span><br><span class="line"></span><br><span class="line">class 类名：</span><br><span class="line">def 方法1(self, 参数列表)</span><br><span class="line">    pass</span><br><span class="line">def 方法2(self, 参数列表)</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure></p>
+<h4 id="类属性">类属性</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class human(object):</span><br><span class="line">    taisheng = True</span><br></pre></td></tr></table></figure>
+<p>为什么要叫类属性呢，因为这个属性和类绑定的，并不是和实例绑定。例如胎生是所有人类共有的属性。</p>
+<h4 id="实例属性">实例属性</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Human(object)：</span><br><span class="line">    def __init__(self,name):</span><br><span class="line">        self.name = name</span><br><span class="line">human_a = Human(&quot;alan&quot;)</span><br></pre></td></tr></table></figure>
+<p>我们首先实例化一个人类human_a，然后对这个人类设置一个实例属性name，name这个属性独立于其他的人类，是和实例绑定的。 - 一般放在构造函数里__init()__</p>
+<h4 id="类方法">类方法</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Human(object):</span><br><span class="line">    def __init__(self,name):</span><br><span class="line">        self.name = name</span><br><span class="line">    def walk(self):</span><br><span class="line">        print(self.name + &quot;is walking&quot;)</span><br><span class="line">human_a = Human(&quot;alan&quot;)                 # 类的实例化,对类实例化的结果就是产生一个该类的对象，实例化是action，对象是value</span><br><span class="line">human_a.walk()                          # 通过对象访问类的sayhi方法</span><br></pre></td></tr></table></figure>
+<p>类的方法可以看作是一种类属性，而传入的第一个参数self，表示调用这个类方法的实例。 #### 访问控制 从上面的例子来看，我们可以在外部随意更改name这个属性，如果不想让外部直接访问到，则在属性这个名字前家两个下划线__name，这样从外部就无法直接访问了。如果还想访问，可以再加个get的接口 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Human(object):</span><br><span class="line">    def __init__(self,name):</span><br><span class="line">        self.__name = name</span><br><span class="line">    def walk(self):</span><br><span class="line">        print(self.name + &quot;is walking&quot;)</span><br><span class="line">    def get_name(self):</span><br><span class="line">        return self.__name</span><br><span class="line">    def set_name(self,name):</span><br><span class="line">        self.__name = name</span><br><span class="line">human_a = Human(&quot;alan&quot;)                </span><br><span class="line">print(human_a.get_name())</span><br></pre></td></tr></table></figure></p>
+<p>疑问：为什么要画蛇添足，增加复杂性<br> 这样做的好处在于增加代码的健壮性，直接暴漏属性可能会带来意想不到的后果，通过接口的方式可以加以控制，例如，我们可以通过set接口去限定name的长度。</p>
+<h4 id="继承">继承</h4>
+<p>最开始的简介里说到，哺乳动物是动物的一种，用面向对象的属于来说，哺乳动物是动物的子类，子类拥有父类的属性、方法、即继承，同时又可以拥有父类没有的属性和方法，即多态。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Man(human):</span><br><span class="line">    def __init__(self,name,has_wife):</span><br><span class="line">        self.__name = name</span><br><span class="line">        self.__has_wife = has_wife</span><br></pre></td></tr></table></figure></p>
+<p>这个男人多了一个属性，__has_wife。我们写到了Man的构造函数里。其实通常并不这么写构造函数，假如Human里有很多属性、很多初始化步骤，我们通常会这么写 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Man(human):</span><br><span class="line">    def __init__(self,name,has_wife):      # 先继承，在重构</span><br><span class="line">        super(Man,self).__init__(name)     #继承父类的构造方法</span><br><span class="line">        self.__has_wife = has_wife</span><br></pre></td></tr></table></figure></p>
+<p>super(Man,self).__init__(name)等价于调用父类Human的构造函数</p>
 
       
     </div>
@@ -399,9 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/语义分割/" rel="tag"># 语义分割</a>
-          
-            <a href="/tags/全卷积/" rel="tag"># 全卷积</a>
+            <a href="/tags/对象和类/" rel="tag"># 对象和类</a>
           
         </div>
       
@@ -414,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/05/入坑java开发的自学之路/" rel="next" title="入坑java开发的自学之路">
-                <i class="fa fa-chevron-left"></i> 入坑java开发的自学之路
+              <a href="/2019/09/11/python3中sys-stdin用法/" rel="next" title="python3中sys.stdin用法">
+                <i class="fa fa-chevron-left"></i> python3中sys.stdin用法
               </a>
             
           </div>
@@ -424,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/08/R-FCN学习及理解/" rel="prev" title="R-FCN学习及理解">
-                R-FCN学习及理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/目标检测论文归纳/" rel="prev" title="目标检测论文归纳">
+                目标检测论文归纳 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -478,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +565,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python类"><span class="nav-number">1.</span> <span class="nav-text">python类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义类"><span class="nav-number">1.1.</span> <span class="nav-text">定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">类属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例属性"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">类方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">1.1.4.</span> <span class="nav-text">继承</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="chan">
 <meta property="og:description" content="前言 目标检测 目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的">
 <meta property="og:locale" content="english、中文">
-<meta property="og:updated_time" content="2019-09-09T09:55:52.600Z">
+<meta property="og:image" content="https://chanchanchanhhh.github.io/2019/09/08/SSD原理与实现/1.jpg">
+<meta property="og:image" content="https://chanchanchanhhh.github.io/2019/09/08/SSD原理与实现/2.jpg">
+<meta property="og:updated_time" content="2019-09-11T13:57:25.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSD原理与实现">
 <meta name="twitter:description" content="前言 目标检测 目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的">
+<meta name="twitter:image" content="https://chanchanchanhhh.github.io/2019/09/08/SSD原理与实现/1.jpg">
 
 
 
@@ -386,17 +389,24 @@
       
         <h2 id="前言">前言</h2>
 <h4 id="目标检测">目标检测</h4>
-<p>目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。</p>
-<h4 id="贡献">贡献</h4>
-<ul>
-<li>相比Yolo，SSD采用CNN来直接进行检测，而不是像Yolo那样在全连接层之后做检测。</li>
-<li>SSD提取了不同尺度的特征图来做检测，大尺度特征图（较靠前的特征图）可以用来检测小物体，而小尺度特征图（较靠后的特征图）用来检测大物体</li>
-<li>SSD采用了不同尺度和长宽比的先验框（Prior boxes, Default boxes，在Faster R-CNN中叫做锚，Anchors）</li>
-</ul>
+<p>目标检测近年来已经取得了很重要的进展，主流的算法主要分为两个类型： 1. two-stage方法，如R-CNN系算法，其主要思路是先通过启发式方法（selective search）或者CNN网络（RPN)产生一系列稀疏的候选框，然后对这些候选框进行分类与回归，two-stage方法的优势是准确度高； 2. one-stage方法，如Yolo和SSD，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。 <img src="/2019/09/08/SSD原理与实现/1.jpg"> <a id="more"></a> ## 设计理念 #### 贡献 - 相比Yolo，SSD采用CNN来直接进行检测，而不是像Yolo那样在全连接层之后做检测。 - SSD提取了不同尺度的特征图来做检测，大尺度特征图（较靠前的特征图）可以用来检测小物体，而小尺度特征图（较靠后的特征图）用来检测大物体 - SSD采用了不同尺度和长宽比的先验框（Prior boxes, Default boxes，在Faster R-CNN中叫做锚，Anchors）</p>
 <h4 id="相比yolo">相比yolo</h4>
 <ol type="1">
-<li>与Yolo最后采用全连接层不同，SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为的特征图，只需要采用 [公式] 这样比较小的卷积核得到检测值。</li>
+<li><p>与Yolo最后采用全连接层不同，SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为的<span class="math inline">\(m×n×p\)</span>特征图，只需要采用<span class="math inline">\(3×3×p\)</span>这样比较小的卷积核得到检测值。</p></li>
+<li><p>在Yolo中，每个单元预测多个边界框，但是其都是相对这个单元本身（正方块），但是真实目标的形状是多变的，Yolo需要在训练过程中自适应目标的形状。<br><br> 而SSD借鉴了Faster R-CNN中anchor的理念，每个单元设置尺度或者长宽比不同的先验框，预测的边界框（bounding boxes）是以这些先验框为基准的，在一定程度上减少训练难度。</p></li>
+<li>SSD的检测值也与Yolo不太一样。对于每个单元的每个先验框，其都输出一套独立的检测值，对应一个边界框，主要分为两个部分</li>
 </ol>
+<ul>
+<li>第一部分是各个类别的置信度或者评分</li>
+<li>第二部分就是边界框的location，包含4个值，分别表示边界框的中心坐标以及宽高。但是真实预测值其实只是边界框相对于先验框的转换值。</li>
+</ul>
+<h2 id="网络结构">网络结构</h2>
+<p>SSD采用VGG16作为基础模型，然后再VGG16的基础上增加了卷积层来获得更多的特征图用于检测。 - VGG16是在ILSVRC CLS-LOC 数据集与训练</p>
+<ul>
+<li><p>将VGG16的全连接层fc6和fc7转换成<span class="math inline">\(3×3\)</span>的卷积层conv6和<span class="math inline">\(1×1\)</span>的卷积层conv7，同时将池化层pool5 stride=2的<span class="math inline">\(2×2\)</span> 变成stride=1的<span class="math inline">\(3×3\)</span></p></li>
+<li><p>采用了一种Atrous Algorithm，在conv6采用采用<span class="math inline">\(3×3\)</span>大小但dilation rate=6的扩展卷积 <img src="/2019/09/08/SSD原理与实现/2.jpg"></p></li>
+<li><p>VGG16的conv4_3将作为用于检测的第一个特征图，conv4_3特征大小<span class="math inline">\(38×38\)</span>，但是需要添加L2 Normalization层，以保证和后面的检测层差异不是很大。与batch normalization层不太一样，其仅仅是对没个像素点在channel维度做归一化，而batch normalization层在[batch_size, width, height]三个维度上做归一化。+</p></li>
+</ul>
 
       
     </div>
@@ -516,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -527,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -538,7 +548,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -571,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标检测"><span class="nav-number">1.0.1.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贡献"><span class="nav-number">1.0.2.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相比yolo"><span class="nav-number">1.0.3.</span> <span class="nav-text">相比yolo</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标检测"><span class="nav-number">1.0.1.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相比yolo"><span class="nav-number">1.0.2.</span> <span class="nav-text">相比yolo</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#网络结构"><span class="nav-number">2.</span> <span class="nav-text">网络结构</span></a></li></div>
             
 
           </div>

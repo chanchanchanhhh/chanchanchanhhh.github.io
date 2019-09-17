@@ -89,7 +89,7 @@
 <meta property="og:locale" content="english、中文">
 <meta property="og:image" content="https://chanchanchanhhh.github.io/2019/09/08/R-FCN学习及理解/1.jpg">
 <meta property="og:image" content="https://chanchanchanhhh.github.io/2019/09/08/R-FCN学习及理解/2.jpg">
-<meta property="og:updated_time" content="2019-09-09T09:18:48.887Z">
+<meta property="og:updated_time" content="2019-09-17T06:19:10.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R-FCN学习及理解">
 <meta name="twitter:description" content="1.贡献  提出Position-sensitive score maps来解决目标检测的位置敏感性问题 区域为基础，全卷积网络的two-state目标检测框架 比faster-rcnn快2.5-20倍">
@@ -416,8 +416,15 @@
 <h4 id="其他">其他</h4>
 <ol type="1">
 <li>trous 技巧<br> 作者将最后1个池化层的步长从2减小到1，那么图像将从缩小32倍变成只缩小16倍，这样就提高了共享卷积层的输出分辨率。而这样做就要使用Atrous Convolution算法，具体参见论文Semantic Image Segmentation With Deep Convolutional Nets and Fully Connnected CRFS</li>
-<li>输入Image的RoI是如何映射到position-sensitive score map上的？<br> 因为RoI的坐标应该相对于原始image的真实坐标，而Position-sensitive RoI pooling的池化操作却是利用RoI在position-sensitive score map上完成的，那么现在就必须有一个映射关系将输入image上的RoI映射到position-sensitive score map上，大致映射见下图（详情可参见原始图片中的ROI如何映射到到feature map?）：</li>
+<li>输入Image的RoI是如何映射到position-sensitive score map上的？<br> 因为RoI的坐标应该相对于原始image的真实坐标，而Position-sensitive RoI pooling的池化操作却是利用RoI在position-sensitive score map上完成的，那么现在就必须有一个映射关系将输入image上的RoI映射到position-sensitive score map上，大致映射见下图（详情可参见原始图片中的ROI如何映射到到feature map?）</li>
 </ol>
+<h4 id="rfcn算法步骤">RFCN算法步骤</h4>
+<ul>
+<li>首先，我们选择一张需要处理的图片，并对这张图片进行相应的预处理。</li>
+<li>接着，我们将预处理后的图片送入一个预训练好的分类网络中。</li>
+<li>接着，在预训练网络的最后一个卷积层获得的feature maps上存在3个分支，第一个分支就是在该feature map上面进行RPN进行获得相应的ROI；第二个分支就是在该feature map获得了一个k*k*(c+1)维的位置敏感得分映射，用来进行分类。第三个分支就是在该feature map上获得一个4*k*k维的位置敏感得分映射，用来进行回归。</li>
+<li>最后，在k<em>k</em>(c+1)维的位置敏感得分映射和4*k*k维的位置敏感得分上面分别执行位置敏感的roi的池化操作，就是平均池化操作，获得对应的类别和位置信息。</li>
+</ul>
 
       
     </div>
@@ -539,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -550,7 +557,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -561,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -594,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#贡献"><span class="nav-number">1.</span> <span class="nav-text">1.贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#r-fcn与传统two-state网络的异同点"><span class="nav-number">2.</span> <span class="nav-text">2.R-FCN与传统two-state网络的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rfc网络设计"><span class="nav-number">3.</span> <span class="nav-text">3.RFC网络设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position-sensitive-score-map"><span class="nav-number">4.</span> <span class="nav-text">4.position-sensitive score map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position-sensitive-regression"><span class="nav-number">5.</span> <span class="nav-text">6.position-sensitive regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络的训练"><span class="nav-number">6.</span> <span class="nav-text">7.网络的训练</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#贡献"><span class="nav-number">1.</span> <span class="nav-text">1.贡献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#r-fcn与传统two-state网络的异同点"><span class="nav-number">2.</span> <span class="nav-text">2.R-FCN与传统two-state网络的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rfc网络设计"><span class="nav-number">3.</span> <span class="nav-text">3.RFC网络设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position-sensitive-score-map"><span class="nav-number">4.</span> <span class="nav-text">4.position-sensitive score map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position-sensitive-regression"><span class="nav-number">5.</span> <span class="nav-text">6.position-sensitive regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络的训练"><span class="nav-number">6.</span> <span class="nav-text">7.网络的训练</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rfcn算法步骤"><span class="nav-number">8.</span> <span class="nav-text">RFCN算法步骤</span></a></li></ol></div>
             
 
           </div>
